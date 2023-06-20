@@ -35,7 +35,7 @@ def ask_palm2(
     return(response.text)
 
 def ask_model(context):
-    prompt = f"""Pretend you're Bob Dylan. Write a song about the text below in the style of Bob Dylan. Text:\n\n{context}\n\nEnd of text."""
+    prompt = f"""Pretend you're Bob Dylan. Write a song about the text below in the style of Bob Dylan. The song must rhyme. Text:\n\n{context}\n\nEnd of text."""
     return(ask_palm2("xebia-ai-training", "text-bison", 0.7, 1024, 1.0, 40, prompt, "us-central1"))
 
 @app.route('/', methods=['GET', 'POST'])
@@ -67,6 +67,7 @@ def landing_page():
               <div class="card mb-5">
                 <div class="card-body p-sm-5">
                   <h2 class="text-center mb-4">LLM Demo</h2>
+                  <p>Provide Virtual Bob Dylan with a text (for example a news article) and let him sing about it.</p>
                   <div class="mb-3">
                     <textarea class="form-control" id="input" name="message" rows="8" placeholder="Inspirational text for Virtual Bob Dylan"></textarea>
                     <br />
